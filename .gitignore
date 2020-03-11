@@ -7,7 +7,7 @@
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
-# v*.py[cod]
+# *.py[cod]
 *.pyc
 *.pyo
 *.pyd
