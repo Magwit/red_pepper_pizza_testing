@@ -47,5 +47,10 @@ def test_placing_order(browser):
 
     # And the sum of the order is the correct amount 13.50
 
+    sum_input_xpath = "//input[@name='total']"
+
+    sum_input = browser.find_element(By.XPATH, sum_input_xpath).get_property("value")
+
+    assert sum_input == "13.50"
+
     time.sleep(2)
-    pass
