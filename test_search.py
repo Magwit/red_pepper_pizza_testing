@@ -26,7 +26,6 @@ def test_search_menu_item(browser):
         print(e.args)
 
     # THEN the menu is filtered to display only Opera and Frutti di Mare
-    # OR the menu is filtered to display only Opera, Frutti di Mare and Boss' surprise
 
     # wait for elements to be hidden
     try:

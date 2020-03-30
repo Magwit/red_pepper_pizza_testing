@@ -51,6 +51,7 @@ def test_placing_order(browser):
 
     # assert that the two specific prder items are nested in the order-items div
     assert len(order_content) == 2
+    assert 1 == 2
 
     # AND the sum of the order is the correct amount 13.50
 
