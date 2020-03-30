@@ -5,6 +5,7 @@ import time
 
 # TODO audit xpaths w Locator Adviser: https://davertmik.github.io/locator/
 # TODO consider renaming teste with git mv
+# TODO is mentor a thing at Ministry of Testing / ask collaboration if testing carrer
 
 
 def test_order_change(browser):
@@ -53,6 +54,9 @@ def test_order_change(browser):
     any_order_xpath = "//*[@class='order-items']/div[contains(@id,'order')]"
     orders = browser.find_elements(By.XPATH, any_order_xpath)
     print(len(orders))
+    visible_order_footer_xpath = "//div[@class='order-footer']//input[@type!='hidden']"
+    visible_order_footer = browser.find_elements(By.XPATH, visible_order_footer_xpath)
+    print(len(visible_order_footer))
 
     # order-header div is empty | still empty
     # order-items div is empty | order-items div contains div/input REPLICATE from test_order.py
@@ -60,6 +64,6 @@ def test_order_change(browser):
 
     # how ro best assert non visibility. precence of hidden property in all that is contained in footer.
 
-    assert 1 == 1
+    assert len(orders) == 0 and len(visible_order_footer) == 0
 
-    time.sleep(2)
+    time.sleep(1)
