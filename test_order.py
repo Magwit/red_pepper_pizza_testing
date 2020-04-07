@@ -49,14 +49,24 @@ def test_placing_order(browser):
 
     order_content = browser.find_elements(By.XPATH, div_xpath)
 
-    # assert that the two specific prder items are nested in the order-items div
-    assert len(order_content) == 2
-    assert 1 == 2
+    # assert that the two specific order items are nested in the order-items div
+    try:
+        assert len(order_content) == 2
+    except Exception as e:
+        browser.save_screenshot("assert_order_items_created.png")
+        print(e.args)
+        raise e
 
     # AND the sum of the order is the correct amount 13.50
 
     sum_input_xpath = "//input[@name='total']"
     sum_input = browser.find_element(By.XPATH, sum_input_xpath).get_property("value")
-    assert sum_input == "13.50"
+
+    try:
+        assert sum_input == "13.50"
+    except Exception as e:
+        browser.save_screenshot("assert_total_amount.png")
+        print(e.args)
+        raise e
 
     time.sleep(2)

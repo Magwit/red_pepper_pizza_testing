@@ -3,9 +3,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
+
+# TODO Use save_screenshot and name the png file appropriatelyusing error message and
+# possibly timestamp tooo for uniqueness. Only assertions warrant screenshots
 # TODO audit xpaths w Locator Adviser: https://davertmik.github.io/locator/
-# TODO consider renaming teste with git mv
-# TODO is mentor a thing at Ministry of Testing / ask collaboration if testing carrer
+# TODO consider if and how assert should be in functions -> extrapolate
 
 
 def test_order_change(browser):
@@ -59,11 +61,14 @@ def test_order_change(browser):
     print(len(visible_order_footer))
 
     # order-header div is empty | still empty
-    # order-items div is empty | order-items div contains div/input REPLICATE from test_order.py
+    # order-items div is empty | order-items div contains div/input
     # order-footer div has two hidden sum elements | order-footer has two input elements
 
-    # how ro best assert non visibility. precence of hidden property in all that is contained in footer.
-
-    assert len(orders) == 0 and len(visible_order_footer) == 0
+    try:
+        assert len(orders) == 0 and len(visible_order_footer) == 0
+    except Exception as e:
+        browser.save_screenshot("assert_order-deleted.png")
+        print(type(e))
+        raise e
 
     time.sleep(1)

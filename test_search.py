@@ -44,6 +44,11 @@ def test_search_menu_item(browser):
     display_matches = browser.find_elements(By.XPATH, display_matches_xath)
     ingredient_matches = browser.find_elements(By.XPATH, ingredient_matches_xpath)
 
-    assert len(display_matches) == len(ingredient_matches)
+    try:
+        assert len(display_matches) == len(ingredient_matches)
+    except Exception as e:
+        browser.save_screenshot("assert_search_results.png")
+        print(e.args)
+        raise e
 
     time.sleep(2)
