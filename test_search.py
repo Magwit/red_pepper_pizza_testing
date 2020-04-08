@@ -1,10 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
-
-# TODO record gifs and then remove sleep
-# TODO screenshots on error
 
 
 def test_search_menu_item(browser):
@@ -50,5 +46,3 @@ def test_search_menu_item(browser):
         browser.save_screenshot("assert_search_results.png")
         print(e.args)
         raise e
-
-    time.sleep(2)

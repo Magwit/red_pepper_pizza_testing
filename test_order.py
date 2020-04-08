@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
 
 # TODO record gifs and then remove sleep
 # TODO screenshots on error
@@ -68,5 +67,3 @@ def test_placing_order(browser):
         browser.save_screenshot("assert_total_amount.png")
         print(e.args)
         raise e
-
-    time.sleep(2)
